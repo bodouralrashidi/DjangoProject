@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-4">
+       <img src="{{ product.image_url}}" alt="...">
+    </div>
+
+        <div class="col-8">
+       <h1>{{product.name}}</h1>
+            <p>{{ product.price}} KWD</p>
+            {% if product.stock != 0%}
+                <button type="button" class="btn btn-primary">Add to Cart</button>
+            {% endif %}
+            {% if product.stock == 0%}
+                <button type="button" class="btn btn-primary" disabled>Add to Cart</button>
+                <p class="text-danger"> Sorry. This item is out of stock</p>
+            {% endif %}
+
+
+    </div>
+</div>
+
+
+{#    {% for product in products %}#}
+{#        <div class="col">#}
+{#        <a style="display: block" href="{% url 'detail' product.id %}">#}
+{#        <div class="card" style="width: 18rem;">#}
+{#            <img src="{{ product.image_url}}" class="card-img-top" alt="...">#}
+{#            <div class="card-body">#}
+{#                <h5 class="card-title">{{product.name}}</h5>#}
+{#                <p class="card-text">{{product.price}}KD</p>#}
+{#                <a href="#" class="btn btn-primary" style="background-color: blueviolet">Add Cart</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#        </a>#}
+{#    {% endfor %}#}
+</div>
+{% endblock %}
