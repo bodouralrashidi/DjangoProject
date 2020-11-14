@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-4">
+       <img src="{{ product.image_url}}" alt="...">
+    </div>
+
+        <div class="col-8">
+       <h1>{{product.name}}</h1>
+            <p>{{ product.price}} KWD</p>
+            {% if product.stock != 0%}
+                <button type="button" class="btn btn-primary">Add to Cart</button>
+            {% endif %}
+            {% if product.stock == 0%}
+                <button type="button" class="btn btn-primary" disabled>Add to Cart</button>
+                <p class="text-danger"> Sorry. This item is out of stock</p>
+            {% endif %}
+
+
+    </div>
+</div>
+
+
+</div>
+{% endblock %}
