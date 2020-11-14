@@ -3,7 +3,7 @@
 <div class="container">
 <div class="row">
     <div class="col-4">
-       <img src="{{ product.image_url}}" alt="...">
+       <img style="width: 250px; height: 350px; object-fit: cover;" src="{{ product.image_url}}" alt="...">
     </div>
 
         <div class="col-8">
@@ -16,8 +16,6 @@
                 <button type="button" class="btn btn-primary" disabled>Add to Cart</button>
                 <p class="text-danger"> Sorry. This item is out of stock</p>
             {% endif %}
-
-
     </div>
 </div>
 

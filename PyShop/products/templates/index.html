@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Best Sellers</h1>
-<div class="row">
+<div class="row" style="margin-top: -50px;">
     {% for product in products %}
-        <div class="col">
-        <a style="display: block" href="{% url 'detail' product.id %}">
-        <div class="card" style="width: 18rem;">
-            <img src="{{ product.image_url}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
-                <p class="card-text">{{product.price}}KD</p>
-                <a href="#" class="btn btn-primary" style="background-color: blueviolet">Add Cart</a>
+        <div class="col-lg-4 d-flex align-items-stretch" style="margin-top: 80px;">
+        <div class="card " style="width: 250px;">
+         <a style="display: block" href="{% url 'detail' product.id %}">
+            <img style="width: 250px; height: 350px; object-fit: cover;" src="{{ product.image_url}}" class="card-img-top " alt="...">
+         </a>
+            <div class="card-body d-flex flex-column">
+             <a style="display: block" href="{% url 'detail' product.id %}">
+                <h5 class="card-title" style="color: black">{{product.name}}</h5>
+             </a>
+                <p class="card-text mt-auto">{{product.price}}KD</p>
+                {% if product.stock != 0%}
+                    <p class="text-secondary mt-auto"> Available in stock.</p>
+                    <button type="button" class="btn btn-primary mt-auto">Add to Cart</button>
+                {% endif %}
+                {% if product.stock == 0%}
+                    <p class="text-danger"> Sorry. This item is out of stock</p>
+                    <button type="button" class="btn btn-primary mt-auto mt-auto" disabled>Add to Cart</button>
+                {% endif %}
             </div>
         </div>
     </div>
-        </a>
     {% endfor %}
 </div>
 {% endblock %}
